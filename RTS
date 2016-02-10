@@ -86,23 +86,23 @@ private evaluate()
 		if (tm in ["cool","auto"]) {
 			// air conditioner
 			if (currentTemp - coolingSetpoint -0.9 >= threshold) {
-				thermostat.setCoolingSetpoint(thermostat.setCoolingSetpoint - 1)
-				log.debug "thermostat.setCoolingSetpoint(${thermostat.currentCoolingSetpoint - 1}), ON"
+				thermostat.setCoolingSetpoint(coolingSetpoint - 2)
+				log.debug "thermostat.setCoolingSetpoint(${coolingSetpoint - 2}), ON"
 			}
-			else if (coolingSetpoint - currentTemp +0.3 >= threshold && currentTemp - thermostat.currentCoolingSetpoint >= threshold) {
-				thermostat.setCoolingSetpoint(thermostat.currentCoolingSetpoint + 1)
-				log.debug "thermostat.setCoolingSetpoint(${thermostat.currentCoolingSetpoint + 1}), OFF"
+			else if (coolingSetpoint - currentTemp +0.4 >= threshold ) {
+				thermostat.setCoolingSetpoint(coolingSetpoint + 2)
+				log.debug "thermostat.setCoolingSetpoint(${coolingSetpoint + 2}), OFF"
 			}
 		}
 		if (tm in ["heat","emergency heat","auto"]) {
 			// heater
 			if (heatingSetpoint - currentTemp - 0.9 >= threshold ) {
-				thermostat.setHeatingSetpoint(ct + 2)
-				log.debug "thermostat.setHeatingSetpoint(${ct + 2}), ON"
+				thermostat.setHeatingSetpoint(heatingSetpoint + 2)
+				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint + 2}), ON"
 			}
 			else if (currentTemp  - heatingSetpoint + 0.4 >= threshold ) {
-				thermostat.setHeatingSetpoint(ct)
-				log.debug "thermostat.setHeatingSetpoint(${ct}), OFF"
+				thermostat.setHeatingSetpoint(heatingSetpoint - 1)
+				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint - 1}), OFF"
 			}
 		}
 	}
@@ -111,12 +111,4 @@ private evaluate()
 		thermostat.setCoolingSetpoint(coolingSetpoint)
 		thermostat.poll()
 	}
-}
-
-// for backward compatibility with existing subscriptions
-def coolingSetpointHandler(evt) {
-	log.debug "coolingSetpointHandler()"
-}
-def heatingSetpointHandler (evt) {
-	log.debug "heatingSetpointHandler ()"
 }
