@@ -96,13 +96,13 @@ private evaluate()
 		}
 		if (tm in ["heat","emergency heat","auto"]) {
 			// heater
-			if (heatingSetpoint - currentTemp - 0.9 >= threshold  &&  currentTemp - thermostat.currentHeatingSetpoint +1.1  >= threshold) {
-				thermostat.setHeatingSetpoint(thermostat.currentHeatingSetpoint + 1)
-				log.debug "thermostat.setHeatingSetpoint(${thermostat.currentHeatingSetpoint + 1}), ON"
+			if (heatingSetpoint - currentTemp - 0.9 >= threshold ) {
+				thermostat.setHeatingSetpoint(ct + 2)
+				log.debug "thermostat.setHeatingSetpoint(${ct + 2}), ON"
 			}
-			else if (currentTemp  - heatingSetpoint + 0.4 >= threshold  && thermostat.currentHeatingSetpoint - currentTemp - 0.9 >= threshold) {
-				thermostat.setHeatingSetpoint(thermostat.currentHeatingSetpoint - 1)
-				log.debug "thermostat.setHeatingSetpoint(${thermostat.currentHeatingSetpoint - 1}), OFF"
+			else if (currentTemp  - heatingSetpoint + 0.4 >= threshold ) {
+				thermostat.setHeatingSetpoint(ct)
+				log.debug "thermostat.setHeatingSetpoint(${ct}), OFF"
 			}
 		}
 	}
