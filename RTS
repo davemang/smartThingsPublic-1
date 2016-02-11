@@ -16,10 +16,9 @@
  */
 
 definition(
-    name: "Matts Remote thermostat sensor",
-    namespace: "smartthings",
-    author: "SmartThings",
-    description: "Adjusts your thermostat like Keep me Cozy II but is designed to work with Keenect",
+    name: "Keltymd's Remote thermostat sensor",
+
+    description: "Adjusts your thermostat like Keep me Cozy II but is designed to work with Keenect and allows more accurate tempurature control",
         iconUrl: "https://s3.amazonaws.com/smartapp-icons/Meta/temp_thermo.png",
     iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Meta/temp_thermo@2x.png"
 )
@@ -101,8 +100,8 @@ private evaluate()
 				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint + 2}), ON"
 			}
 			else if (currentTemp  - heatingSetpoint + 0.4 >= threshold ) {
-				thermostat.setHeatingSetpoint(heatingSetpoint - 1)
-				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint - 1}), OFF"
+				thermostat.setHeatingSetpoint(heatingSetpoint - 2)
+				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint - 2}), OFF"
 			}
 		}
 	}
