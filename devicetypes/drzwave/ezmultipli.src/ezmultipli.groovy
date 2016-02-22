@@ -241,22 +241,22 @@ def setColor(value) {
   	//cmds << zwave.colorControlV1.stateSet(stateDataLength: 3, VariantGroup1: [0x02, myred], VariantGroup2:[ 0x03, mygreen], VariantGroup3:[0x04,myblue]).format() // ST support for this command as of 2015/02/23 does not support the color IDs so this command cannot be used.
     // So instead we'll use these commands to hack around the lack of support of the above command
 	cmds << zwave.basicV1.basicSet(value: 0x00).format() // As of 2015/02/23 ST is not supporting stateSet properly but found this hack that works. 
-	if (myred!=0) {
-       	cmds << zwave.colorControlV1.startCapabilityLevelChange(capabilityId: 0x02, startState: myred, ignoreStartState: True, updown: True).format()
-		cmds << zwave.colorControlV1.stopStateChange(capabilityId: 0x02).format()
-    }
-    if (mygreen!=0) {
-	 	cmds << zwave.colorControlV1.startCapabilityLevelChange(capabilityId: 0x03, startState: mygreen, ignoreStartState: True, updown: True).format()
-	 	cmds << zwave.colorControlV1.stopStateChange(capabilityId: 0x03).format()
-    }
-    if (myblue!=0) {
-		cmds << zwave.colorControlV1.startCapabilityLevelChange(capabilityId: 0x04, startState: myblue, ignoreStartState: True, updown: True).format()
-		cmds << zwave.colorControlV1.stopStateChange(capabilityId: 0x04).format()
-    }
-    cmds << zwave.basicV1.basicGet().format()
-    hexValue = rgbToHex([r:myred, g:mygreen, b:myblue])
-    if(hexValue) sendEvent(name: "color", value: hexValue, displayed: true)
-    delayBetween(cmds, 100)
+	//if (myred!=0) {
+    //   	cmds << zwave.colorControlV1.startCapabilityLevelChange(capabilityId: 0x02, startState: myred, ignoreStartState: True, updown: True).format()
+	//	cmds << zwave.colorControlV1.stopStateChange(capabilityId: 0x02).format()
+    //}
+    //if (mygreen!=0) {
+	// 	cmds << zwave.colorControlV1.startCapabilityLevelChange(capabilityId: 0x03, startState: mygreen, ignoreStartState: True, updown: True).format()
+	// 	cmds << zwave.colorControlV1.stopStateChange(capabilityId: 0x03).format()
+    //}
+    //if (myblue!=0) {
+	//	cmds << zwave.colorControlV1.startCapabilityLevelChange(capabilityId: 0x04, startState: myblue, ignoreStartState: True, updown: True).format()
+	//	cmds << zwave.colorControlV1.stopStateChange(capabilityId: 0x04).format()
+   // }
+   // cmds << zwave.basicV1.basicGet().format()
+   // hexValue = rgbToHex([r:myred, g:mygreen, b:myblue])
+   // if(hexValue) sendEvent(name: "color", value: hexValue, displayed: true)
+   // delayBetween(cmds, 100)
 }
 
 def zwaveEvent(physicalgraph.zwave.Command cmd) {
