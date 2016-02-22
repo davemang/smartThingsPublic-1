@@ -89,7 +89,7 @@ private evaluate()
 				log.debug "thermostat.setCoolingSetpoint(${coolingSetpoint - 5}), ON"
 			}
 			else if (coolingSetpoint - currentTemp +0.2 >= threshold ) {
-				thermostat.setCoolingSetpoint(coolingSetpoint + 2)
+				thermostat.setCoolingSetpoint(coolingSetpoint + 5)
 				log.debug "thermostat.setCoolingSetpoint(${coolingSetpoint + 2}), OFF"
 			}
 		}
