@@ -100,8 +100,8 @@ private evaluate()
 				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint + 5}), ON"
 			}
 			else if (currentTemp  - heatingSetpoint + 0.2 >= threshold ) {
-				thermostat.setHeatingSetpoint(heatingSetpoint - 2)
-				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint - 2}), OFF"
+				thermostat.setHeatingSetpoint(heatingSetpoint - 5)
+				log.debug "thermostat.setHeatingSetpoint(${heatingSetpoint - 5}), OFF"
 			}
 		}
 	}
