@@ -17,7 +17,7 @@
 
 definition(
     name: "Keltymds Remote thermostat sensor",
-
+    namespace: "keltymd",
     description: "Adjusts your thermostat like Keep me Cozy II but is designed to work with Keenect and allows more accurate tempurature control",
         iconUrl: "https://s3.amazonaws.com/smartapp-icons/Meta/temp_thermo.png",
     iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Meta/temp_thermo@2x.png"
